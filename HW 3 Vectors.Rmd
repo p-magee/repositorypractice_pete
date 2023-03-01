@@ -1,0 +1,99 @@
+---
+title: "Untitled"
+author: "Julie & Pete DS 613 HW 3, Vectors"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r, message=FALSE}
+library(tidyverse)
+library(purrr)
+```
+
+```{r}
+Vector1 <- (c(10, 19, 121, 83, 63, 7, 77, 61, 51, 97, 123, 41))
+Vector1
+```
+
+# #1
+```{r}
+#method 1
+Vector1[1]
+Vector1[12]
+
+#method 2
+Vector1[-2:-12]
+Vector1[-1:-11]
+```
+# #2
+```{r}
+#method 1
+Vector1[Vector1 < 60]
+
+#method 2
+Vector1[c(1:2,6,9,12)]
+
+#method 3
+Vector1[!Vector1 >= 60]
+```
+
+# #3
+```{r}
+#method 1
+Vector1[Vector1 %% 2 != 0 & Vector1 %% 3 != 0]
+
+#method 2
+Filter(function(i) { all(i %% c(2,3) != 0) }, Vector1)
+```  
+# #4
+```{r}
+Vector1[is.na(Vector1)]
+Vector1[!is.na(Vector1)]
+```
+
+```{r}
+myList <- list(TRUE, 12.35, "pear", 48, c = 3:8, list(23, "team"))
+myList
+```
+
+# #5
+```{r}
+str(myList)
+```
+
+# #6
+```{r}
+myList[1:3]
+```
+# #7
+```{r}
+myList1 <- list(TRUE, 12.35, c = "pear", 48, c = 3:8, list(23, "team"))
+
+myList1$c
+```
+
+# #8
+```{r}
+quadA <- function(a, b, c) {
+  c(
+    (-b + sqrt(b^2 - 4 * a * c)) / (2 * a),
+    (-b - sqrt(b^2 - 4 * a * c)) / (2 * a)
+  )
+}
+
+quadA(1, -3, -28)
+quadA(1, 1, -30)
+quadA(3, 14, 8)
+quadA(2, 11, -6)
+```
+# #9
+```{r}
+inte <- seq(from = 5, to = 0.5, by = -0.5)
+data <- data.frame(x = 1:10, y = 10:1, z = inte)
+data
+```
+# #10
+```{r}
+data %>%
+  map_dbl(IQR)
+```
